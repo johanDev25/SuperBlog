@@ -8,6 +8,12 @@
           <div class="post-details">
             <span class="post-title"><%= link_to post.name, post %></span>
             <span class="post-description"><%= post.body %></span>
+            <% if signed_in? && post.user == current_user %>
+            <div class="actions">
+              <%= link_to "editar", edit_post_path(post) %>
+              <%= link_to "eliminar", post, method: :delete, data: { confirm: "¿Estás seguro de eliminar este post?" } %>
+            </div>
+            <% end %>
           </div>
         </div>
         <% end %>

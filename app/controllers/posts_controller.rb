@@ -11,8 +11,8 @@ class PostsController < ApplicationController
     
 	def create
 		@post = Post.new(post_params)
-		@Post.user = current_user
-		if @Post.save
+		@post.user = current_user
+		if @post.save
 			redirect_to posts_path, notice: "El post fue publicado con exito"
 		else
 		    render :new
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
 	def update
 		post = Post.find(params[:id])
-		if Post.update(post_params)
+		if post.update(post_params)
 		redirect_to posts_path, notice: "El post a sido modificado con exito"
 	    else
         render :edit   

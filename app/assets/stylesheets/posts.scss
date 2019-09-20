@@ -56,7 +56,10 @@
 			.post-description {
 				display: block;
 				color: #999;
+				max-height: 3rem;
 				font-size: 16px;
+				overflow: hidden;
+				text-align: justify;
 			}
 		}
 
