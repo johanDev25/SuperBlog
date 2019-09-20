@@ -1,34 +1,43 @@
 <div class="post-page">
-  <header class="post-header">
-    <h1><%= @post.name %></h1>
-    <p><%= @post.body %></p>
-  </header>
+ <div class="jumbotron">
+  <div class="container text-center">
+    <h1 class="display-3"><%= @post.name %></h1>
+    <p><%= @post.body %>.</p>
+  </div>
+</div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <div class="comments">
-          <h2>Comentarios</h2>
-          <% @post.comments.each do |comment| %>
-          <div class="panel panel-default">
-            <header class="panel-heading"><%= comment.user.name %></header>
-            <div class="panel-body"><%= comment.body %></div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-2">
+      <div class="comments">
+        <h3>Comentarios</h3>
+        <% @post.comments.each do |comment| %>
+        <div class="card">
+          <div class="card-header">
+            <%= comment.user.name %>
           </div>
-          <% end %>
-
-          <% if signed_in? %>
-          <%= form_for [@post, @post.comments.build] do |f| %>
-          <div class="form-group">
-            <%= f.text_area :body, class: "form-control", placeholder: "Agregar respuesta" %>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p><%= comment.body %></p>
+              <footer class="blockquote-footer"><%= comment.created_at %></footer>
+            </blockquote>
           </div>
-
-          <div class="actions text-right">
-            <%= f.submit "Comentar", class: "btn btn-primary" %>
-          </div>
-          <% end %>
-          <% end %>
         </div>
+        <% end %>  
+        <% if signed_in? %>
+        <h3>Comentar</h3>
+        <%= form_for [@post, @post.comments.build] do |f| %>
+        <div class="form-group py-3">
+          <%= f.text_area :body, class: "form-control", placeholder: "Agregar respuesta" %>
+        </div>
+
+        <div class="actions text-right">
+          <%= f.submit "Comentar", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 </div>

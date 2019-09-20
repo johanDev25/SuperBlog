@@ -1,23 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-
-      <div class="posts">
+      <div class="col-md-12 py-3 text-decoration-none">
         <% @posts.each do |post| %>
-        <div class="post clearfix">
-          <div class="post-details">
-            <span class="post-title"><%= link_to post.name, post %></span>
-            <span class="post-description"><%= post.body %></span>
+        <div class="jumbotron p-1 p-md-8 text-black rounded bg-ligth">
+          <div class="col-md-12 px-0">
+            <h1 class="display-5 col-10 text-uppercase"><%= link_to post.name, post %></h1>
+            <p class="display-10 col-10"><%= post.created_at %> by <a href="#"><%= post.user.name %></a></p>
+            <p class="lead my-9 col-10 text-truncate"><%= post.body %></p>
             <% if signed_in? && post.user == current_user %>
-            <div class="actions">
-              <%= link_to "editar", edit_post_path(post) %>
-              <%= link_to "eliminar", post, method: :delete, data: { confirm: "¿Estás seguro de eliminar este post?" } %>
-            </div>
-            <% end %>
+            <nav class="blog-pagination py-3">
+              <%= link_to "<span class='fas fa-edit'></span> Editar".html_safe, edit_post_path(post)%>
+              <%= link_to "<span class='fas fa-trash-alt'></span> Eliminar".html_safe, post, method: :delete, data: { confirm: "¿Estás seguro de eliminar este post?" }%>
+            </nav>
+             <% end %>
           </div>
         </div>
         <% end %>
       </div>
-    </div>
   </div>
 </div>
