@@ -1,7 +1,7 @@
    	<div class="container">
    		<div class="row">
-   			<div class="col-sm-6 offset-sm-3">
-   				<h1>Post</h1>
+   			<div class="col-sm-8 offset-sm-2">
+   				<h1 class="text-center"><%= form_title %></h1>
            <% if @post.errors.any? %>
            <div class="alert alert-danger">
              <ul>
@@ -16,11 +16,11 @@
            <%= f.text_field :name, class: "form-control input-lg", placeholder: "ingresa el nombre del post" %>
           </div>
           <div class="form-group">
-           <%= f.text_area :body, class: "form-control input-lg", placeholder: "ingresa la descripcion del post" %>
+           <%= f.text_area :body, class: "form-control input-lg", placeholder: "ingresa la descripcion del post", rows: 15 %>
           </div>
   
           <div>
-           <%= f.submit "Publicar", class: "btn btn-primary btn-lg btn-block" %>
+           <%= f.submit form_title, class: "btn btn-primary btn-lg btn-block" %>
           </div>
           <% end %>
         </div>
