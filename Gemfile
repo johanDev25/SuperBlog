@@ -26,6 +26,10 @@ gem 'jquery-rails'
 
 gem 'bootstrap', '~> 4.3.1'
 
+gem 'redcarpet', '~> 3.5'
+
+gem 'pygments.rb'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

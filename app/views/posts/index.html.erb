@@ -4,11 +4,11 @@
         <% @posts.each do |post| %>
         <div class="jumbotron p-1 p-md-8 text-black rounded bg-ligth">
           <div class="col-md-12 px-0">
-            <h1 class="display-5 col-10 text-uppercase"><%= link_to post.name, post %></h1>
-            <p class="display-10 col-10"><%= post.created_at %> by <a href="#"><%= post.user.name %></a></p>
+            <h1 class="display-5 col-10 py-1 text-uppercase"><%= link_to post.name, post %></h1>
+            <p class="display-10 col-10"><%= post.created_at.strftime("%Y-%m-%d(%T)") %> by <a href="#"><%= post.user.name %></a></p>
             <p class="lead my-9 col-10 text-truncate"><%= post.body %></p>
             <% if signed_in? && post.user == current_user %>
-            <nav class="blog-pagination py-3">
+            <nav class="blog-pagination py-3 col-10">
               <%= link_to "<span class='fas fa-edit'></span> Editar".html_safe, edit_post_path(post)%>
               <%= link_to "<span class='fas fa-trash-alt'></span> Eliminar".html_safe, post, method: :delete, data: { confirm: "¿Estás seguro de eliminar este post?" }%>
             </nav>
